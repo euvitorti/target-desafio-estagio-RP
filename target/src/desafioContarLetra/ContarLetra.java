@@ -1,4 +1,4 @@
-package desafioInverterString;
+package desafioContarLetra;
 
 public class ContarLetra {
 

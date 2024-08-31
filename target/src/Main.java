@@ -1,5 +1,5 @@
+import desafioContarLetra.ContarLetra;
 import desafioFibonacci.Fibonacci;
-import desafioInverterString.ContarLetra;
 import desafioSoma.Soma;
 
 import java.util.InputMismatchException;
@@ -76,7 +76,7 @@ public class Main {
             1. Desafio Soma
             2. Desafio Fibonacci
             3. Desafio Contar Letra 'A'
-            6. Sair
+            4. Sair
             """);
 
             System.out.print("Escolha uma opção: ");
@@ -100,7 +100,7 @@ public class Main {
                 case 3:
                     contarLetra();
                     break;
-                case 6:
+                case 4:
                     continuar = false;
                     System.out.println("Antes de ir... Acesse o meu portfólio: https://meuportfolio-euvitortis-projects.vercel.app/");
                     System.out.println("Saindo... Obrigado por usar o programa. 👋");
