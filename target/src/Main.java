@@ -1,8 +1,6 @@
-import desafioFaturamento.Faturamento;
 import desafioFibonacci.Fibonacci;
 import desafioInverterString.InverterString;
 import desafioSoma.Soma;
-import desafioPercentualFaturamento.PercentualFaturamento;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -47,45 +45,6 @@ public class Main {
         fibonacci.verificarNumeroFibonacci(numero);
     }
 
-    public static void mostrarResultadosFaturamento() {
-        System.out.println("""
-        \n-----------------
-        Desafio Faturamento
-        -------------------
-        """);
-
-        try {
-            Faturamento faturamento = Faturamento.fromXML("arquivosFaturamento/faturamentos.xml");
-            double menor = faturamento.menorFaturamento();
-            double maior = faturamento.maiorFaturamento();
-            double media = faturamento.mediaMensal();
-            int diasAcimaDaMedia = faturamento.diasAcimaDaMedia();
-
-            System.out.printf("Menor valor de faturamento: %.2f\n", menor);
-            System.out.printf("Maior valor de faturamento: %.2f\n", maior);
-            System.out.printf("Média mensal: %.2f\n", media);
-            System.out.printf("Número de dias com faturamento acima da média: %d\n", diasAcimaDaMedia);
-        } catch (Exception e) {
-            System.out.println("Erro ao ler o arquivo de faturamento: " + e.getMessage());
-        }
-    }
-
-    public static void mostrarPercentualFaturamento() {
-        System.out.println("""
-    \n----------------------------
-    Desafio Percentual Faturamento
-    ------------------------------
-    """);
-
-        try {
-            PercentualFaturamento percentualFaturamento = PercentualFaturamento.fromXML(
-                    "arquivosFaturamento/percentualFaturamento.xml");
-            percentualFaturamento.calcularPercentuais();
-        } catch (Exception e) {
-            System.out.println("Erro ao calcular percentual de faturamento: " + e.getMessage());
-        }
-    }
-
     public static void inverterString() {
         System.out.println("""
         \n-----------------------------
@@ -110,8 +69,6 @@ public class Main {
             -----------------------------
             1. Desafio Soma
             2. Desafio Fibonacci
-            3. Desafio Faturamento
-            4. Desafio Percentual Faturamento
             5. Desafio Inversão de String
             6. Sair
             """);
@@ -135,12 +92,6 @@ public class Main {
                     verificarNumeroFibonacci();
                     break;
                 case 3:
-                    mostrarResultadosFaturamento();
-                    break;
-                case 4:
-                    mostrarPercentualFaturamento();
-                    break;
-                case 5:
                     inverterString();
                     break;
                 case 6:
