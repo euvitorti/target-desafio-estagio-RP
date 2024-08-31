@@ -1,5 +1,5 @@
 import desafioFibonacci.Fibonacci;
-import desafioInverterString.InverterString;
+import desafioInverterString.ContarLetra;
 import desafioSoma.Soma;
 
 import java.util.InputMismatchException;
@@ -45,18 +45,24 @@ public class Main {
         fibonacci.verificarNumeroFibonacci(numero);
     }
 
-    public static void inverterString() {
+    public static void contarLetra() {
         System.out.println("""
         \n-----------------------------
-        Desafio Inversão de String
+        Desafio Contar Letra "A"
         -----------------------------
         """);
 
-        System.out.print("Informe a string para inverter: ");
+        System.out.print("Informe uma palavra ou um texto, como por exemplo: (Já sabemos quem vamos contratar!) 😊: ");
         String str = scanner.nextLine(); // Lê a string informada pelo usuário
 
-        String resultado = InverterString.inverter(str); // Inverte a string
-        System.out.println("String invertida: " + resultado);
+        int resultado = ContarLetra.verificarEContar(str);
+
+        // Exibe o resultado
+        if (resultado > 0) {
+            System.out.printf("A letra 'a' ou 'A' aparece %d vezes na string.", resultado);
+        } else {
+            System.out.println("A letra 'a' ou 'A' não aparece na string.");
+        }
     }
 
     public static void main(String[] args) {
@@ -69,7 +75,7 @@ public class Main {
             -----------------------------
             1. Desafio Soma
             2. Desafio Fibonacci
-            5. Desafio Inversão de String
+            3. Desafio Contar Letra 'A'
             6. Sair
             """);
 
@@ -92,7 +98,7 @@ public class Main {
                     verificarNumeroFibonacci();
                     break;
                 case 3:
-                    inverterString();
+                    contarLetra();
                     break;
                 case 6:
                     continuar = false;
