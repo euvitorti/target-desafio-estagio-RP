@@ -48,14 +48,40 @@ O próximo número é 20.
 
 Desafio 5:
 
-Primeiro, eu ligo o primeiro interruptor e deixo ele ligado por uns 15 minutos, assim a lâmpada vai esquentar.
+Primeiro, eu ligo o primeiro interruptor e deixo ele ligado por uns 15 minutos, isso faz a lâmpada esquentar.
 
 Depois, eu desligo o primeiro interruptor e ligo o segundo interruptor e mantenho o terceiro interruptor desligado.
 
-Então, eu vou até as salas das lâmpadas e faço o seguinte:
+Vou até a primeira e a segunda sala para verificar as seguintes situações:
 
-A lâmpada que está acesa é a que eu liguei com o segundo interruptor.
-Eu toco nas lâmpadas que estão apagadas, e a lâmpada que está quente é a que eu liguei com o primeiro interruptor.
-A lâmpada que está fria é o terceiro interruptor, pois esse nunca foi ligado.
+Situação 1: Primeira sala com a lâmpada acesa e segunda sala com a lâmpada fria
+Primeira sala com a lâmpada acesa: A lâmpada na primeira sala está conectada ao segundo interruptor (pois é o que está ligado no momento).
+Segunda sala com a lâmpada fria: A lâmpada fria na segunda sala está conectada ao terceiro interruptor (pois o terceiro interruptor nunca foi ligado).
+Lâmpada quente: A lâmpada quente deve estar na sala que não foi visitada ainda e está conectada ao primeiro interruptor.
 
-Assim, eu descubro qual interruptor controla cada lâmpada com apenas duas idas às salas.
+Situação 2: Primeira sala com a lâmpada acesa e segunda sala com a lâmpada quente
+Primeira sala com a lâmpada acesa: A lâmpada na primeira sala está conectada ao segundo interruptor.
+Segunda sala com a lâmpada quente: A lâmpada quente na segunda sala está conectada ao primeiro interruptor (pois esteve ligado e esquentou).
+Lâmpada fria: A lâmpada fria deve estar conectada ao terceiro interruptor.
+
+Situação 3: Primeira sala com a lâmpada apagada e quente, e segunda sala com a lâmpada acesa
+Primeira sala com a lâmpada apagada e quente: A lâmpada quente na primeira sala está conectada ao primeiro interruptor (pois esteve ligado e esquentou).
+Segunda sala com a lâmpada acesa: A lâmpada acesa está conectada ao segundo interruptor.
+Lâmpada fria: A lâmpada fria deve estar conectada ao terceiro interruptor.
+
+Situação 4: Primeira sala com a lâmpada apagada e quente, e segunda sala com a lâmpada apagada e fria
+Primeira sala com a lâmpada apagada e quente: A lâmpada quente na primeira sala está conectada ao primeiro interruptor.
+Segunda sala com a lâmpada apagada e fria: A lâmpada fria na segunda sala está conectada ao terceiro interruptor.
+Lâmpada acesa: A lâmpada acesa deve estar na sala não visitada e conectada ao segundo interruptor.
+
+Situação 5: Primeira sala com a lâmpada apagada e fria, e segunda sala com a lâmpada acesa
+Primeira sala com a lâmpada apagada e fria: A lâmpada fria na primeira sala está conectada ao terceiro interruptor.
+Segunda sala com a lâmpada acesa: A lâmpada acesa está conectada ao segundo interruptor.
+Lâmpada quente: A lâmpada quente deve estar na sala não visitada e conectada ao primeiro interruptor.
+
+Situação 6: Primeira sala com a lâmpada apagada e fria, e segunda sala com a lâmpada apagada e quente
+Primeira sala com a lâmpada apagada e fria: A lâmpada fria na primeira sala está conectada ao terceiro interruptor.
+Segunda sala com a lâmpada apagada e quente: A lâmpada quente na segunda sala está conectada ao primeiro interruptor.
+Lâmpada acesa: A lâmpada acesa deve estar na sala não visitada e conectada ao segundo interruptor.
+
+Em todas essas situações, eu consigo identificar a que interruptor cada lâmpada está conectada seguindo essas observações.
