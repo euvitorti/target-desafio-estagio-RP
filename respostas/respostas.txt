@@ -45,3 +45,17 @@ De 18 para 19: incremento de 1
 19 + 1 = 20
 
 O próximo número é 20.
+
+Desafio 5:
+
+Primeiro, eu ligo o primeiro interruptor e deixo ele ligado por uns 15 minutos, assim a lâmpada vai esquentar.
+
+Depois, eu desligo o primeiro interruptor e ligo o segundo interruptor e mantenho o terceiro interruptor desligado.
+
+Então, eu vou até as salas das lâmpadas e faço o seguinte:
+
+A lâmpada que está acesa é a que eu liguei com o segundo interruptor.
+Eu toco nas lâmpadas que estão apagadas, e a lâmpada que está quente é a que eu liguei com o primeiro interruptor.
+A lâmpada que está fria é o terceiro interruptor, pois esse nunca foi ligado.
+
+Assim, eu descubro qual interruptor controla cada lâmpada com apenas duas idas às salas.
