@@ -1,6 +1,8 @@
-# Lógica de Programação 👨‍💻
-
 ## #QueroSerTargetiano
+
+<img src="https://attachments.gupy.io/production/companies/519/career/574/images/logo.png" alt="Target Sistema" width="200">
+
+# Lógica de Programação 👨‍💻
 
 ## Desafio 4 e 5, encontra-se no caminho: respostas/respostas.txt
 
@@ -23,6 +25,5 @@ c) 0, 1, 4, 9, 16, 25, 36, ____
 d) 4, 16, 36, 64, ____
 e) 1, 1, 2, 3, 5, 8, ____
 f) 2,10, 12, 16, 17, 18, 19, ____
-
 
 5) Você está em uma sala com três interruptores, cada um conectado a uma lâmpada em salas diferentes. Você não pode ver as lâmpadas da sala em que está, mas pode ligar e desligar os interruptores quantas vezes quiser. Seu objetivo é descobrir qual interruptor controla qual lâmpada. Como você faria para descobrir, usando apenas duas idas até uma das salas das lâmpadas, qual interruptor controla cada lâmpada?
