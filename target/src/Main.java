@@ -80,7 +80,7 @@ public class Main {
             """);
 
             System.out.print("Escolha uma opção: ");
-            int opcao = -1;
+            int opcao = 0;
 
             try {
                 opcao = scanner.nextInt();
