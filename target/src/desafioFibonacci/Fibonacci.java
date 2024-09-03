@@ -23,7 +23,7 @@ public class Fibonacci {
         // Gerando a sequência de Fibonacci até que o próximo número seja maior que n
         while (a <= n) {
             if (a == n) {
-                return true;
+                return true; // Número encontrado na sequência
             }
             int temp = a;
             a = b;

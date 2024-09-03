@@ -55,7 +55,7 @@ public class Main {
         System.out.print("Informe uma palavra ou um texto, como por exemplo: (Já sabemos quem vamos contratar!) 😊: ");
         String str = scanner.nextLine(); // Lê a string informada pelo usuário
 
-        int resultado = ContarLetra.verificarEContar(str);
+        int resultado = ContarLetra.verificarFrase(str);
 
         // Exibe o resultado
         if (resultado > 0) {
@@ -102,8 +102,14 @@ public class Main {
                     break;
                 case 4:
                     continuar = false;
-                    System.out.println("Antes de ir... Acesse o meu portfólio: https://meuportfolio-euvitortis-projects.vercel.app/");
-                    System.out.println("Saindo... Obrigado por usar o programa. 👋");
+                    System.out.println("""
+                            
+                            #QueroSerTargetiano 👨‍💻
+                            
+                            Antes de ir... Acesse o meu portfólio: https://meuportfolio-euvitortis-projects.vercel.app/
+                            
+                            Saindo... Obrigado por usar o programa. 👋
+                            """);
                     break;
                 default:
                     System.out.println("Opção inválida. Por favor, escolha uma opção entre 1 e 6.");
