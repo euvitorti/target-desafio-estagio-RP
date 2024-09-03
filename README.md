@@ -1,4 +1,6 @@
-# Lógica de Programação
+# Lógica de Programação 👨‍💻
+
+## #QueroSerTargetiano
 
 ## Desafio 4 e 5, encontra-se no caminho: respostas/respostas.txt
 
