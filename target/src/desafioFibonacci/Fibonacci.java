@@ -22,8 +22,9 @@ public class Fibonacci {
 
         // Gerando a sequência de Fibonacci até que o próximo número seja maior que n
         while (a <= n) {
+            System.out.print(a + " "); // Exibindo o número atual da sequência
             if (a == n) {
-                return true; // Número encontrado na sequência
+                return true;
             }
             int temp = a;
             a = b;
@@ -38,10 +39,11 @@ public class Fibonacci {
 
         // Usando o operador ternário para criar a mensagem
         String mensagem = numeroFibonacci(numero)
-                ? "O número " + numero + " pertence à sequência de Fibonacci."
-                : "O número " + numero + " NÃO pertence à sequência de Fibonacci.";
+                ? "\nO número " + numero + " pertence à sequência de Fibonacci."
+                : "\nO número " + numero + " NÃO pertence à sequência de Fibonacci.";
 
         // Exibindo a mensagem
         System.out.println(mensagem);
     }
+
 }
