@@ -7,9 +7,13 @@ import java.util.Scanner;
 
 public class Main {
 
-    private static Scanner scanner = new Scanner(System.in);
+    // Scanner para ler entradas do usuário
+    private static final Scanner scanner = new Scanner(System.in);
 
-    // Mensagens e opções usadas em múltiplos lugares
+    // Mensagem de erro para opções inválidas
+    private static final String OPCAO_INVALIDA = "Opção inválida. Por favor, escolha uma opção válida.";
+
+    // Menu principal exibido ao usuário
     private static final String MENU_PRINCIPAL = """
         \n-----------------------------
         👩‍💻     Target Sistemas     👨‍💻
@@ -20,6 +24,7 @@ public class Main {
         4. Sair
         """;
 
+    // Menu específico para o desafio de soma
     private static final String MENU_SOMA = """
         \n------------
         Desafio Soma
@@ -28,140 +33,121 @@ public class Main {
         2. Escolher Somar Número
         """;
 
-    private static final String OPCAO_INVALIDA = "Opção inválida. Por favor, escolha uma opção válida.";
-
+    /*
+     Método para exibir um menu e ler a opção escolhida pelo usuário.
+     Garante que a entrada seja válida e maior que 0.
+    */
     private static int lerOpcao(String menu) {
-        int opcao = 0;
-        boolean inputValido = false;
-
-        // Exibe o menu e lê a opção escolhida pelo usuário
         System.out.println(menu);
-        while (!inputValido) {
+        while (true) {
             try {
                 System.out.print("Escolha uma opção: ");
-                opcao = scanner.nextInt();
+                int opcao = scanner.nextInt();
                 scanner.nextLine(); // Consumir a nova linha deixada pelo nextInt()
-
-                if (opcao > 0) {
-                    inputValido = true; // Se a opção for válida, sai do loop
-                } else {
-                    System.out.println(OPCAO_INVALIDA);
-                }
+                if (opcao > 0) return opcao; // Verifica se a opção é válida (maior que 0)
+                System.out.println(OPCAO_INVALIDA);
             } catch (InputMismatchException e) {
                 System.out.println("Entrada inválida. Por favor, insira um número válido.");
-                scanner.next(); // Limpar o buffer para evitar loop infinito
+                scanner.next(); // Limpa o buffer para evitar loop infinito
             }
         }
-
-        return opcao;
     }
 
-    private static void somar() {
-        int opcao = lerOpcao(MENU_SOMA);
-        Soma soma = new Soma(); // Cria uma instância da classe Soma
-        int resultado;
-
-        switch (opcao) {
-            case 1:
-                resultado = soma.somarNumeroPadrao(); // Soma os números padrão
-                System.out.printf("Valor da soma com número padrão: %d.\n", resultado);
-                break;
-            case 2:
-                try {
-                    System.out.print("Informe um número para somar: ");
-                    int numero = scanner.nextInt(); // Lê o número informado pelo usuário
-                    resultado = soma.escolherSomarNumero(numero); // Soma o número informado
-                    System.out.printf("Valor da soma com número informado: %d.\n", resultado);
-                } catch (InputMismatchException e) {
-                    System.out.println("Entrada inválida. Somente números inteiros são permitidos.");
-                    scanner.next(); // Limpar o buffer para evitar problemas
-                }
-                break;
-            default:
-                System.out.println(OPCAO_INVALIDA);
-                break;
-        }
-    }
-
-    private static void verificarNumeroFibonacci() {
-        System.out.println("""
-        \n---------------
-        Desafio Fibonacci
-        -----------------
-        """);
-
-        boolean inputValido = false; // Variável para controlar se a entrada é válida
-        int numero = 0;
-
-        while (!inputValido) {
+    /*
+     Método para ler um número inteiro informado pelo usuário.
+     Garante que a entrada seja válida.
+    */
+    private static int lerNumero() {
+        while (true) {
             try {
-                System.out.print("Informe um número: ");
-                numero = scanner.nextInt(); // Lê o número informado pelo usuário
-                inputValido = true; // Marca a entrada como válida se não houver exceção
+                int numero = scanner.nextInt();
+                scanner.nextLine(); // Consumir a nova linha deixada pelo nextInt()
+                return numero;
             } catch (InputMismatchException e) {
                 System.out.println("Entrada inválida. Por favor, insira um número inteiro.");
-                scanner.next(); // Limpa o buffer do scanner para evitar loop infinito
+                scanner.next(); // Limpa o buffer para evitar loop infinito
             }
         }
-
-        Fibonacci fibonacci = new Fibonacci(); // Cria uma instância da classe Fibonacci
-        fibonacci.verificarNumeroFibonacci(numero); // Verifica se o número faz parte da sequência de Fibonacci
     }
 
+    /*
+     Método que lida com a lógica do Desafio Soma.
+     Oferece opções para somar um número padrão ou um número escolhido pelo usuário.
+    */
+    private static void somar() {
+        int opcao = lerOpcao(MENU_SOMA); // Exibe o menu de soma e lê a opção escolhida
+        Soma soma = new Soma(); // Instancia a classe Soma
+
+        // Realiza a operação de soma conforme a opção escolhida
+        int resultado = switch (opcao) {
+            case 1 -> soma.somarNumeroPadrao(); // Soma usando número padrão
+            case 2 -> {
+                System.out.print("Informe um número para somar: ");
+                yield soma.escolherSomarNumero(lerNumero()); // Soma usando o número informado pelo usuário
+            }
+            default -> {
+                System.out.println(OPCAO_INVALIDA);
+                yield 0;
+            }
+        };
+
+        // Exibe o resultado se a soma foi realizada
+        if (resultado != 0) System.out.printf("Valor da soma: %d.\n", resultado);
+    }
+
+    /*
+     Método que lida com a lógica do Desafio Fibonacci.
+     Solicita um número ao usuário e verifica se faz parte da sequência de Fibonacci.
+    */
+    private static void verificarNumeroFibonacci() {
+        System.out.println("""
+        -----------------
+        Desafio Fibonacci
+        -----------------""");
+
+        // Lê o número informado pelo usuário e verifica na sequência de Fibonacci
+        System.out.print("Informe um número: ");
+        new Fibonacci().verificarNumeroFibonacci(lerNumero());
+    }
+
+    /*
+     Método que lida com a lógica do Desafio Contar Letra 'A'.
+     Conta quantas vezes a letra 'a' ou 'A' aparece em uma string fornecida pelo usuário.
+    */
     private static void contarLetra() {
         System.out.println("""
-        \n-----------------------------
-        Desafio Contar Letra "A"
         -----------------------------
-        """);
+        Desafio Contar Letra "A"
+        -----------------------------""");
 
-        System.out.print("Informe uma palavra ou um texto, como por exemplo: (Já sabemos quem vamos contratar!) 😊: ");
-        String str = scanner.nextLine(); // Lê a string informada pelo usuário
+        System.out.print("Informe uma palavra ou um texto: ");
+        String str = scanner.nextLine();
 
-        int resultado = ContarLetra.verificarFrase(str); // Chama o método para contar a letra 'a'
-
-        // Exibe o resultado
-        if (resultado > 0) {
-            System.out.printf("A letra 'a' ou 'A' aparece %d vezes na string.\n", resultado);
-        } else {
-            System.out.println("A letra 'a' ou 'A' não aparece na string.");
-        }
+        int resultado = ContarLetra.verificarFrase(str);
+        System.out.printf("A letra 'a' ou 'A' aparece %d vezes na string.\n", resultado);
     }
 
+    /*
+     Método principal que controla o fluxo do programa.
+     Exibe o menu principal e chama os métodos correspondentes às opções escolhidas pelo usuário.
+    */
     public static void main(String[] args) {
-        boolean continuar = true; // Controle para manter o loop do menu ativo
-
-        // Loop do menu principal
-        while (continuar) {
-            int opcao = lerOpcao(MENU_PRINCIPAL);
-
+        while (true) {
+            int opcao = lerOpcao(MENU_PRINCIPAL); // Exibe o menu principal e lê a opção escolhida
             switch (opcao) {
-                case 1:
-                    somar(); // Chama o método de soma
-                    break;
-                case 2:
-                    verificarNumeroFibonacci(); // Chama o método de verificação Fibonacci
-                    break;
-                case 3:
-                    contarLetra(); // Chama o método de contagem de letras
-                    break;
-                case 4:
-                    continuar = false; // Sinaliza para sair do loop e encerrar o programa
+                case 1 -> somar(); // Chama o método para o Desafio Soma
+                case 2 -> verificarNumeroFibonacci(); // Chama o método para o Desafio Fibonacci
+                case 3 -> contarLetra(); // Chama o método para o Desafio Contar Letra 'A'
+                case 4 -> { // Sai do programa
                     System.out.println("""
-                            
-                            #QueroSerTargetiano 👨‍💻
-                            
-                            Antes de ir... Acesse o meu portfólio: https://meuportfolio-euvitortis-projects.vercel.app/
-                            
-                            Saindo... Obrigado por usar o programa. 👋
-                            """);
-                    break;
-                default:
-                    System.out.println(OPCAO_INVALIDA);
-                    break;
+                    #QueroSerTargetiano 👨‍💻
+                    Antes de ir... Acesse o meu portfólio: https://meuportfolio-euvitortis-projects.vercel.app/
+                    Saindo... Obrigado por usar o programa. 👋""");
+                    scanner.close();
+                    return;
+                }
+                default -> System.out.println(OPCAO_INVALIDA);
             }
         }
-
-        scanner.close(); // Fecha o scanner para liberar recursos
     }
 }
